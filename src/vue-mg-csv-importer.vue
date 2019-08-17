@@ -45,10 +45,9 @@ export default {
                     from: detected,
                     type: 'string'
                 });
-                const lines = unicodeString.split("\n")
+                const lines = this.parseCSV2(unicodeString.trim())
                 lines.forEach((element, index) => {
-                    // const workerData = element.replace(/"/g, "").split(",")
-                    const workerData = this.parseCSV2(element)
+                    const workerData = element
                     let worker = {}
                     if (this.is_header && index == 0) return
                     for (let i = 0; i < workerData.length; i++) {
