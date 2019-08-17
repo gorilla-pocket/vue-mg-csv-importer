@@ -1,27 +1,3 @@
-# vue-mg-csv-importer
-vue-mg-csv-importer
-
-![npm](https://img.shields.io/npm/v/vue-mg-csv-importer)
-![npm](https://img.shields.io/npm/dm/vue-mg-csv-importer)
-
-## Installation
-
-```
-npm i vue-mg-csv-importer
-```
-
-## Usage
-
-app.js
-
-```javascript
-import CsvImporter from 'vue-mg-csv-importer'
-Vue.component('CsvImporter', CsvImporter)
-```
-
-Example:
-
-```html
 <template>
   <section class="container mt-2">
     <div class="form-group form-check">
@@ -57,8 +33,3 @@ export default {
   },  
 }
 </script>
-```
-
-## License
-
-MIT
