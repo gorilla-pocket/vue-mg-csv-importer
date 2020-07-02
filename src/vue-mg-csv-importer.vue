@@ -18,6 +18,9 @@ export default {
         is_header: {
             default: false,
         },
+        delim: {
+            default: ',',
+        } 
     },
     data: function() {
         return {
@@ -45,7 +48,7 @@ export default {
                     from: detected,
                     type: 'string'
                 });
-                const lines = this.parseCSV2(unicodeString.trim())
+                const lines = this.parseCSV2(unicodeString.trim(),this.delim)
                 lines.forEach((element, index) => {
                     const workerData = element
                     let worker = {}

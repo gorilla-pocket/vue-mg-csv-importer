@@ -4,7 +4,7 @@
       <input type="checkbox" class="form-check-input" id="header" v-model="checked">
       <label class="form-check-label" for="header">ヘッダーあり</label>
     </div>
-    <csv-importer @file-change="data=$event" :file_name.sync="file_name" :is_header="checked"/>
+    <csv-importer @file-change="data=$event" :file_name.sync="file_name" :is_header="checked" :delim="'\t'"/>
     <div>
       data: {{data}}
     </div>
