@@ -20,6 +20,9 @@ export default {
         },
         delim: {
             default: ',',
+        },
+        file_word_type: {
+            default: '',
         } 
     },
     data: function() {
@@ -43,6 +46,7 @@ export default {
             const loadFunc = () => {
                 var codes = new Uint8Array(reader.result);
                 var detected = encoding.detect(codes);
+                this.$emit('update:file_word_type', detected)
                 var unicodeString = encoding.convert(codes, {
                     to: 'unicode',
                     from: detected,
