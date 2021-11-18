@@ -21,8 +21,12 @@ export default {
         delim: {
             default: ',',
         },
-        file_word_type: {
+        file_character_code: {
             default: '',
+        },
+        is_header_detect: {
+            type: Boolean,
+            default: false,
         } 
     },
     data: function() {
@@ -34,6 +38,7 @@ export default {
         fileChange: function (e) {
             if (!e.target.files.length) {
                 this.$emit('update:file_name', '')
+                this.$emit('update:file_character_code', '')
                 this.workers = []
                 this.$emit('file-change', this.workers)
                 return
@@ -45,8 +50,11 @@ export default {
 
             const loadFunc = () => {
                 var codes = new Uint8Array(reader.result);
+                var header_index = codes.indexOf(10) + 1
+                var header_detected = encoding.detect(codes.slice(0,header_index));
                 var detected = encoding.detect(codes);
-                this.$emit('update:file_word_type', detected)
+                if (this.is_header_detect && header_detected != detected) detected = header_detected
+                this.$emit('update:file_character_code', detected)
                 var unicodeString = encoding.convert(codes, {
                     to: 'unicode',
                     from: detected,
